@@ -24,6 +24,3 @@ print(f"{autor}, {type(autor)}")
 
 titulo = "1984"
 print(f"{titulo}, {type(titulo)}")
-
-
-

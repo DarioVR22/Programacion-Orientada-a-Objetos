@@ -10,16 +10,17 @@ Ampliación: Compara los títulos " Dune " y "dune" ignorando espacios exteriore
 """
 
 # Escribe tu solución debajo.
-titulo = "  dune  "
-limpio = titulo.strip()
-mayusculas = limpio.upper()
+if __name__ == "__main__":
+    titulo = "  dune  "
+    limpio = titulo.strip()
+    mayusculas = limpio.upper()
 
-print(repr(titulo))
-print(repr(limpio))
-print(repr(mayusculas))
+    print(repr(titulo))
+    print(repr(limpio))
+    print(repr(mayusculas))
 
-titulo2= " Dune "
-titulo = titulo.strip().lower()
-titulo2 = titulo2.strip().lower()
-if titulo == titulo2:
-    print("Los títulos son iguales")
+    titulo2= " Dune "
+    titulo = titulo.strip().lower()
+    titulo2 = titulo2.strip().lower()
+    if titulo == titulo2:
+        print("Los títulos son iguales")

@@ -13,7 +13,7 @@ Ampliación: Calcula cuántas cajas de 5 ejemplares se llenan con los 12 y cuán
 
 ejemplares = 12
 prestados = 5
-cajas = 5
+capacidad = 5
 
 restantes = ejemplares - prestados
 porcentaje = (restantes / ejemplares)*100
@@ -24,7 +24,7 @@ if restantes > 0:
 else:
     print("Error: el resultado es menor a 0.")
     
-cajas_totales = ejemplares // cajas
-resto = ejemplares % cajas
-print(f"Con {ejemplares} se llenarían {cajas_totales} y sobrarían {resto} libros.")
+cajas_totales = ejemplares // capacidad
+resto = ejemplares % capacidad
+print(f"Con {ejemplares} se llenarían {cajas_totales} cajas y sobrarían {resto} libros.")
     
