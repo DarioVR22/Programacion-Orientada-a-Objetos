@@ -28,3 +28,4 @@ cajas_totales = ejemplares // capacidad
 resto = ejemplares % capacidad
 print(f"Con {ejemplares} se llenarían {cajas_totales} cajas y sobrarían {resto} libros.")
     
+print(2%3)

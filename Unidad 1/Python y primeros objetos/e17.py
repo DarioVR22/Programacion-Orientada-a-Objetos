@@ -36,5 +36,6 @@ def pedir_opcion(mensaje, maximo):
 
 
 # Ejercicio principal
-resultado = pedir_entero("Introduce un entero mayor o igual que cero: ")
-print("Número válido:", resultado)
+if __name__ == "__main__":
+    resultado = pedir_entero("Introduce un entero mayor o igual que cero: ")
+    print("Número válido:", resultado)
