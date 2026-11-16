@@ -1,22 +1,60 @@
 class Libro:
     """Modelo preparado para aprender a usar objetos."""
+
     def __init__(self, codigo, titulo, fecha=2026, autor=None):
+        if not self.codigo_valido(codigo):
+            raise ValueError("Código inválido. Debe tener formato L01-L99.")
+
+        if not isinstance(titulo, str) or not titulo.strip():
+            raise ValueError("El título no puede estar vacío.")
+
         self.codigo = codigo
-        self.titulo = titulo
-        self.disponible = True
+        self.titulo = titulo.strip()
+        self._disponible = True
         self.fecha = fecha
         self.autor = autor
+
+    @staticmethod
+    def codigo_valido(texto):
+        if not isinstance(texto, str):
+            return False
+
+        if len(texto) != 3:
+            return False
+
+        if texto[0] != "L":
+            return False
+
+        if not all(c in "0123456789" for c in texto[1:]):
+            return False
+
+        return 1 <= int(texto[1:]) <= 99
+
+    @classmethod
+    def desde_linea(cls, linea):
+        if not isinstance(linea, str) or ";" not in linea:
+            raise ValueError("La línea debe contener un punto y coma.")
+
+        codigo, titulo = linea.split(";", 1)
+
+        return cls(codigo.strip(), titulo.strip())
+
+    @property
+    def disponible(self):
+        return self._disponible
 
     def prestar(self):
         if not self.disponible:
             return False
-        self.disponible = False
+
+        self._disponible = False
         return True
 
     def devolver(self):
         if self.disponible:
             return False
-        self.disponible = True
+
+        self._disponible = True
         return True
 
     def resumen(self):
@@ -24,7 +62,9 @@ class Libro:
             estado = "disponible"
         else:
             estado = "prestado"
+
         return f"{self.titulo}: {estado}"
+
     
 class Biblioteca:
     def __init__(self):

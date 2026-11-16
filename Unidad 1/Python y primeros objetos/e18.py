@@ -22,12 +22,9 @@ def listar_libros(libros):
             print(f"{libro.codigo} - {libro.resumen()}")
 
 
-# Creamos la biblioteca y añadimos los libros
+# Creamos la biblioteca vacía
 if __name__ == "__main__":
     biblioteca = Biblioteca()
-
-    biblioteca.agregar(Libro("L1", "Dune", autor="Frank Herbert"))
-    biblioteca.agregar(Libro("L2", "1984", autor="George Orwell"))
 
     # Menú principal
     while True:
@@ -38,6 +35,7 @@ if __name__ == "__main__":
         print("  2. Prestar libro")
         print("  3. Devolver libro")
         print("  4. Listar libros disponibles")
+        print("  5. Alta desde escáner")
         print("  0. Salir")
         print("=" * 35)
 
@@ -92,6 +90,27 @@ if __name__ == "__main__":
                     if libro.disponible
                 ]
                 listar_libros(libros_disponibles)
+
+            case 5:
+                linea = input("Introduce el código y título del libro: ")
+
+                try:
+                    libro = Libro.desde_linea(linea)
+
+                    if biblioteca.agregar(libro):
+                        print("\n" + "-" * 35)
+                        print("Libro añadido correctamente.")
+                        print("-" * 35 + "\n")
+
+                    else:
+                        print("\n" + "-" * 35)
+                        print("Error: ya existe un libro con ese código.")
+                        print("-" * 35 + "\n")
+
+                except ValueError as error:
+                    print("\n" + "-" * 35)
+                    print(f"Error: {error}")
+                    print("-" * 35 + "\n")
 
             case 0:
                 print("\n" + "=" * 35)
